@@ -3,38 +3,25 @@
 <head>
 	<meta name="viewport" content="width=device-width">
 	<meta charset="UTF-8">
-	<title>测试</title>
-	<style>
-		html, body, video{
+	<title>新年快乐</title>
+	<style type="text/css">
+		body,
+		html {
 			margin: 0;
 			width: 100%;
 			height: 100%;
-			font-size: 14px;
-			object-fit: cover;
+		}
+		iframe{
+			transform: scaleX(-1);
 		}
 	</style>
 </head>
 <body>
-	<video src="#"></video>
+	<iframe src="https://www.baidu.com" name="wrap" frameborder="0" width="100%" height="100%"></iframe>
 	<script>
-		// document.write('navigator.mediaDevices.getUserMedia:' + !!navigator.mediaDevices.getUserMedia + '<br/>');
-		// document.write('navigator.getUserMedia:' + !!navigator.getUserMedia + '<br/>');
-		// document.write('MediaStreamTrack.getSources:' + !!MediaStreamTrack.getSources + '<br/>');
-
-		// navigator.getUserMedia({video: true}, suc, err);
-		navigator.mediaDevices.getUserMedia({video: true}).then(suc, err);
-
-		function suc(stream){
-			var video = document.querySelector('video')
-			video.src = window.URL.createObjectURL(stream);
-            video.onloadedmetadata = function(e) {
-                video.play();
-            };
-		}
-
-		function err(err){
-			alert('error:' + err.name);
-		}
+		window.ifr = document.querySelector('iframe');
+		console.log(window.frames['wrap']);
+		console.dir(ifr.contentWindow.document.getElementsByTagName('a'));
 	</script>
 </body>
 </html>
