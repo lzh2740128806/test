@@ -20,9 +20,9 @@
 		// document.write('navigator.mediaDevices.getUserMedia:' + !!navigator.mediaDevices.getUserMedia + '<br/>');
 		// document.write('navigator.getUserMedia:' + !!navigator.getUserMedia + '<br/>');
 		// document.write('MediaStreamTrack.getSources:' + !!MediaStreamTrack.getSources + '<br/>');
-		
 
-		navigator.getUserMedia({video: true}, suc, err);
+		// navigator.getUserMedia({video: true}, suc, err);
+		navigator.mediaDevices.getUserMedia({video: true}).then(suc, err);
 
 		function suc(stream){
 			var video = document.querySelector('video')
