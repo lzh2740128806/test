@@ -56,6 +56,8 @@
 					x2 = e.targetTouches[1].clientX;
 					y2 = e.targetTouches[1].clientY;
 				}
+				document.addEventListener('touchmove', move);
+				document.addEventListener('touchend', end);
 			}
 			function move(e){
 				e.preventDefault();
@@ -81,12 +83,10 @@
 				rotate_old = rotate;
 				x1 = x2 = y1 = y2 = 0;
 				// document.removeEventListener('touchstart', start);
-				// document.removeEventListener('touchmove', move);
-				// document.removeEventListener('touchend', end);
+				document.removeEventListener('touchmove', move);
+				document.removeEventListener('touchend', end);
 			}
 			document.addEventListener('touchstart', start);
-			document.addEventListener('touchmove', move);
-			document.addEventListener('touchend', end);
 		}
 
 		gesture();
