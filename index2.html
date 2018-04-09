@@ -36,23 +36,21 @@
 		var mc = new Hammer(document.body);
 		mc.add( new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0}) );
 		mc.add( new Hammer.Rotate() );
-		mc.on('panmove', function(e){
-			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px) rotate(${rotation}deg`;
-		})
-		mc.on('panend', function(e){
-			x += e.deltaX;
-			y +=e.deltaY;
-		});
+		mc.add( new Hammer.Pinch() );
 		mc.on('rotatestart', function(e){
 			ir = e.rotation;
-		})
-		mc.on('rotatemove', function(e){
-			div.innerHTML = `roatation: ${e.rotation - ir}`;
-			img.style.transform = `translate(${x}px, ${y}px) rotate(${e.rotation - ir + rotation}deg`;
 		});
-		mc.on('rotateend', function(e){
+		mc.on('panmove rotatemove pinchmove', function(e){
+			div.innerHTML = `roatation: ${e.rotation - ir}`;
+			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px) rotate(${e.rotation - ir + rotation}deg) scale(${scale * e.scale})`;
+		});
+		mc.on('panend rotateend pinchend', function(e){
+			x += e.deltaX;
+			y +=e.deltaY;
 			rotation += e.rotation - ir;
-		})
+			scale = scale * e.scale;
+		});
+		
 	</script>
 </body>
 </html>
