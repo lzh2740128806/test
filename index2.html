@@ -32,6 +32,7 @@
 		var y = 0;
 		var scale = 1;
 		var rotation = 0;
+		var ir = 0;
 		var mc = new Hammer(document.body);
 		mc.add( new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0}) );
 		mc.add( new Hammer.Rotate() );
@@ -42,12 +43,15 @@
 			x += e.deltaX;
 			y +=e.deltaY;
 		});
+		mc.on('rotatestart', function(e){
+			if = e.rotation;
+		})
 		mc.on('rotatemove', function(e){
-			div.innerHTML = `roatation: ${e.rotation}`;
-			img.style.transform = `translate(${x}px, ${y}px) rotate(${e.rotation}deg`;
+			div.innerHTML = `roatation: ${e.rotation-if}`;
+			img.style.transform = `translate(${x}px, ${y}px) rotate(${e.rotation - ir + rotation}deg`;
 		});
 		mc.on('rotateend', function(e){
-			rotation = e.rotation;
+			rotation += e.rotation - ir;
 		})
 	</script>
 </body>
