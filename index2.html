@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<style>
+		html, body{
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			font-size: 14px;
+			text-align: center;
+		}
+		div{
+			position: fixed;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div>0</div>
+	<img src="8.jpg" alt="" style="width: 100px;">
+
+	<script src="hammer.min.js"></script>
+	<script>
+		var div = document.querySelector('div');
+		var img = document.querySelector('img');
+
+		var x = 0;
+		var y = 0;
+		var scale = 1;
+		var rotation = 0;
+		var mc = new Hammer(document.body);
+		mc.add( new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0}) );
+		mc.on('panmove', function(e){
+			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px`;
+		})
+		mc.on('panend', function(e){
+			x += e.deltaX;
+			y +=e.deltaY;
+		});
+		mc.on('rotate', function(e){
+			div.innerHTML = `roatation: ${e.rotation}`;
+		})
+	</script>
+</body>
+</html>
