@@ -20,11 +20,11 @@
 	</style>
 </head>
 <body>
-	<div></div>
+	<div>0</div>
 	<img src="8.jpg" alt="" style="width: 100px;">
 	<script>
+		var div = document.querySelector('div');
 		var img = document.querySelector('img');
-
 		function gesture(){
 			var touches_len;
 			var x1 = 0;
@@ -49,7 +49,7 @@
 			function start(e){
 				e.preventDefault();
 				touches_len = e.targetTouches.length;
-				document.querySelector('div').innerHTML = touches_len;
+				div.innerHTML = touches_len;
 				x1 = e.targetTouches[0].clientX;
 				y1 = e.targetTouches[0].clientY;
 				if(touches_len>1){
@@ -81,7 +81,7 @@
 				translate_y_old = translate_y;
 				scale_old = scale;
 				rotate_old = rotate;
-				x1 = x2 = y1 = y2 = 0;
+				div.innerHTML = 0;
 				// document.removeEventListener('touchstart', start);
 				document.removeEventListener('touchmove', move);
 				document.removeEventListener('touchend', end);
