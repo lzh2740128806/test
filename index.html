@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<meta charset="UTF-8">
 	<title>测试</title>
 	<style>
@@ -25,10 +25,18 @@
 			var y1 = 0;
 			var x2 = 0;
 			var y2 = 0;
+			var mx1;
+			var my1;
+			var mx2;
+			var my2;
 			var translate_x = 0;
 			var translate_y = 0;
+			var translate_x_old = 0;
+			var translate_y_old = 0;
 			var scale = 1;
+			var scale_old = 1;
 			var rotate = 0;
+			var rotate_old = 0;
 			function cb(){
 				img.style.transform = `translate(${translate_x}px, ${translate_y}px) rotate(${rotate}deg) scale(${scale})`;
 			}
@@ -42,31 +50,33 @@
 				}
 			}
 			function move(e){
-				var mx1, my1, mx2, my2;
 				mx1 = e.targetTouches[0].clientX;
 				my1 = e.targetTouches[0].clientY;
 				if(touches_len==1){
-					translate_x = mx1 - x1;
-					translate_y = my1 - y1;
+					translate_x = mx1 - x1 + translate_x_old;
+					translate_y = my1 - y1 + translate_y_old;
 				}
 				if(touches_len==2){
 					mx2 = e.targetTouches[1].clientX;
 					my2 = e.targetTouches[1].clientY;
-					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
 					// rotate = 
 				}
 				cb();
-				
 			}
-			function end(){
-				document.removeEventListener('touchstart', start);
-				document.removeEventListener('touchmove', move);
-				document.removeEventListener('touchend', end);
+			function end(e){
+				translate_x_old = translate_x;
+				translate_y_old = translate_y;
+				// document.removeEventListener('touchstart', start);
+				// document.removeEventListener('touchmove', move);
+				// document.removeEventListener('touchend', end);
 			}
 			document.addEventListener('touchstart', start);
 			document.addEventListener('touchmove', move);
 			document.addEventListener('touchend', end);
 		}
+
+		gesture();
 		
 	</script>
 </body>
