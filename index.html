@@ -20,9 +20,9 @@
 	</style>
 </head>
 <body>
-	<div>0</div>
-	<img src="8.jpg" alt="" style="width: 100px;">
-	<script>
+	<!-- <div>0</div>
+	<img src="8.jpg" alt="" style="width: 100px;"> -->
+	<!-- <script>
 		var div = document.querySelector('div');
 		var img = document.querySelector('img');
 		function gesture(){
@@ -86,9 +86,19 @@
 			document.addEventListener('touchmove', move);
 			document.addEventListener('touchend', end);
 		}
-
+	
 		gesture();
 		
+	</script> -->
+	<video src="test.mp4" src="width: 100%;"></video>
+	<script>
+		document.querySelector('video').onclick = function(){
+			if(this.paused){
+				this.play();
+			}else{
+				this.pause();
+			}
+		}
 	</script>
 </body>
 </html>
