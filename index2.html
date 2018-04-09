@@ -36,7 +36,7 @@
 		mc.add( new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0}) );
 		mc.add( new Hammer.Rotate() );
 		mc.on('panmove', function(e){
-			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px`;
+			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px) rotate(${rotation}deg`;
 		})
 		mc.on('panend', function(e){
 			x += e.deltaX;
@@ -44,7 +44,8 @@
 		});
 		mc.on('rotatemove', function(e){
 			div.innerHTML = `roatation: ${e.rotation}`;
-		})
+			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px) rotate(${rotation}deg`;
+		});
 	</script>
 </body>
 </html>
