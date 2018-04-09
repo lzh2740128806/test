@@ -58,6 +58,7 @@
 				}
 				document.addEventListener('touchmove', move);
 				document.addEventListener('touchend', end);
+				document.removeEventListener('touchstart', start);
 			}
 			function move(e){
 				e.preventDefault();
@@ -85,6 +86,7 @@
 				// document.removeEventListener('touchstart', start);
 				document.removeEventListener('touchmove', move);
 				document.removeEventListener('touchend', end);
+				document.addEventListener('touchstart', start);
 			}
 			document.addEventListener('touchstart', start);
 		}
