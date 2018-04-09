@@ -12,9 +12,15 @@
 			font-size: 14px;
 			text-align: center;
 		}
+		div{
+			position: fixed;
+			left: 0;
+			top: 0;
+		}
 	</style>
 </head>
 <body>
+	<div></div>
 	<img src="8.jpg" alt="" style="width: 100px;">
 	<script>
 		var img = document.querySelector('img');
@@ -43,6 +49,7 @@
 			function start(e){
 				e.preventDefault();
 				touches_len = e.targetTouches.length;
+				document.querySelector('div').innerHTML = touches_len;
 				x1 = e.targetTouches[0].clientX;
 				y1 = e.targetTouches[0].clientY;
 				if(touches_len>1){
