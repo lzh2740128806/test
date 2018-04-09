@@ -34,7 +34,7 @@
 		var rotation = 0;
 		var mc = new Hammer(document.body);
 		mc.add( new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0}) );
-		mc.add( new Hammer.Rotate({) );
+		mc.add( new Hammer.Rotate() );
 		mc.on('panmove', function(e){
 			img.style.transform = `translate(${x + e.deltaX}px, ${y + e.deltaY}px`;
 		})
