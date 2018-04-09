@@ -11,6 +11,7 @@
 			height: 100%;
 			font-size: 14px;
 			text-align: center;
+			overflow: hidden;
 		}
 		div{
 			position: fixed;
@@ -90,7 +91,7 @@
 		gesture();
 		
 	</script> -->
-	<video src="test.mp4" src="width: 100%;"></video>
+	<video src="test.mp4" style="width: 100%;" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
 	<script>
 		document.querySelector('video').onclick = function(){
 			if(this.paused){
