@@ -56,9 +56,6 @@
 					x2 = e.targetTouches[1].clientX;
 					y2 = e.targetTouches[1].clientY;
 				}
-				document.addEventListener('touchmove', move);
-				document.addEventListener('touchend', end);
-				document.removeEventListener('touchstart', start);
 			}
 			function move(e){
 				e.preventDefault();
@@ -73,6 +70,7 @@
 					my2 = e.targetTouches[1].clientY;
 					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
 					// rotate = 
+					console.log(e.targetTouches[0].e/targetTouches[1]);
 				}
 				cb();
 			}
@@ -83,12 +81,10 @@
 				scale_old = scale;
 				rotate_old = rotate;
 				div.innerHTML = 0;
-				// document.removeEventListener('touchstart', start);
-				document.removeEventListener('touchmove', move);
-				document.removeEventListener('touchend', end);
-				document.addEventListener('touchstart', start);
 			}
 			document.addEventListener('touchstart', start);
+			document.addEventListener('touchmove', move);
+			document.addEventListener('touchend', end);
 		}
 
 		gesture();
