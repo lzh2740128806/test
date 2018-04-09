@@ -47,7 +47,7 @@
 			ir = e.rotation;
 		})
 		mc.on('rotatemove', function(e){
-			div.innerHTML = `roatation: ${e.rotation-if}`;
+			div.innerHTML = `roatation: ${e.rotation - ir}`;
 			img.style.transform = `translate(${x}px, ${y}px) rotate(${e.rotation - ir + rotation}deg`;
 		});
 		mc.on('rotateend', function(e){
