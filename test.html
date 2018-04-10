@@ -51,7 +51,6 @@
 			function start(e){
 				e.preventDefault();
 				touches_len = e.targetTouches.length;
-				div.innerHTML = touches_len;
 				x1 = e.targetTouches[0].clientX;
 				y1 = e.targetTouches[0].clientY;
 				if(touches_len>1){
@@ -73,6 +72,7 @@
 					my2 = e.targetTouches[1].clientY;
 					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
 					rotate = Math.atan((my2 - my1) / (mx2 - mx1) * 180 / Math.PI);
+					div.innerHTML = rotate + rotate_old - ro;
 				}
 				cb();
 			}
@@ -83,7 +83,6 @@
 				scale_old = scale;
 				rotate_old += rotate - ro;
 				ro = 0;
-				div.innerHTML = 0;
 			}
 			document.addEventListener('touchstart', start);
 			document.addEventListener('touchmove', move);
