@@ -56,7 +56,7 @@
 				if(touches_len>1){
 					x2 = e.targetTouches[1].clientX;
 					y2 = e.targetTouches[1].clientY;
-					ro = Math.atan((my2 - my1) / (mx2 - mx1)) * 180 / Math.PI;
+					ro = Math.atan((my2 - my1) / (mx2 - mx1)) * 180 / Math.PI || 0;
 				}
 			}
 			function move(e){
@@ -71,7 +71,7 @@
 					mx2 = e.targetTouches[1].clientX;
 					my2 = e.targetTouches[1].clientY;
 					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
-					rotate = Math.atan((my2 - my1) / (mx2 - mx1)) * 180 / Math.PI;
+					rotate = Math.atan((my2 - my1) / (mx2 - mx1)) * 180 / Math.PI || 0;
 					div.innerHTML = rotate + rotate_old - ro;
 				}
 				cb();
