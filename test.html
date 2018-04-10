@@ -81,7 +81,7 @@
 				translate_x_old = translate_x;
 				translate_y_old = translate_y;
 				scale_old = scale;
-				rotate_old += rotate - ro;
+				rotate_old = rotate_old + rotate - ro;
 				ro = 0;
 			}
 			document.addEventListener('touchstart', start);
