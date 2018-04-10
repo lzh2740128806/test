@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<style>
+		html, body{
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			font-size: 14px;
+			text-align: center;
+			overflow: hidden;
+		}
+		div{
+			position: fixed;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div>0</div>
+	<img src="8.jpg" alt="" style="width: 100px;"> -->
+	<!-- <script>
+		var div = document.querySelector('div');
+		var img = document.querySelector('img');
+		function gesture(){
+			var touches_len;
+			var x1 = 0;
+			var y1 = 0;
+			var x2 = 0;
+			var y2 = 0;
+			var mx1;
+			var my1;
+			var mx2;
+			var my2;
+			var translate_x = 0;
+			var translate_y = 0;
+			var translate_x_old = 0;
+			var translate_y_old = 0;
+			var scale = 1;
+			var scale_old = 1;
+			var rotate = 0;
+			var rotate_old = 0;
+			function cb(){
+				img.style.transform = `translate(${translate_x}px, ${translate_y}px) rotate(${rotate}deg) scale(${scale})`;
+			}
+			function start(e){
+				e.preventDefault();
+				touches_len = e.targetTouches.length;
+				div.innerHTML = touches_len;
+				x1 = e.targetTouches[0].clientX;
+				y1 = e.targetTouches[0].clientY;
+				if(touches_len>1){
+					x2 = e.targetTouches[1].clientX;
+					y2 = e.targetTouches[1].clientY;
+				}
+			}
+			function move(e){
+				e.preventDefault();
+				mx1 = e.targetTouches[0].clientX;
+				my1 = e.targetTouches[0].clientY;
+				if(touches_len==1){
+					translate_x = mx1 - x1 + translate_x_old;
+					translate_y = my1 - y1 + translate_y_old;
+				}
+				if(touches_len==2){
+					mx2 = e.targetTouches[1].clientX;
+					my2 = e.targetTouches[1].clientY;
+					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
+					// rotate = 
+					console.log(e.targetTouches[0].e/targetTouches[1]);
+				}
+				cb();
+			}
+			function end(e){
+				e.preventDefault();
+				translate_x_old = translate_x;
+				translate_y_old = translate_y;
+				scale_old = scale;
+				rotate_old = rotate;
+				div.innerHTML = 0;
+			}
+			document.addEventListener('touchstart', start);
+			document.addEventListener('touchmove', move);
+			document.addEventListener('touchend', end);
+		}
+	
+		gesture();
+		
+	</script> -->
+	<video src="test.mp4" style="width: 100%;" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
+	<script>
+		document.querySelector('video').onclick = function(){
+			if(this.paused){
+				this.play();
+			}else{
+				this.pause();
+			}
+		}
+	</script>
+</body>
+</html>
