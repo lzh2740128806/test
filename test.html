@@ -21,9 +21,9 @@
 	</style>
 </head>
 <body>
-	<!-- <div>0</div>
-	<img src="8.jpg" alt="" style="width: 100px;"> -->
-	<!-- <script>
+	<div>0</div>
+	<img src="8.jpg" alt="" style="width: 100px;">
+	<script>
 		var div = document.querySelector('div');
 		var img = document.querySelector('img');
 		function gesture(){
@@ -44,8 +44,9 @@
 			var scale_old = 1;
 			var rotate = 0;
 			var rotate_old = 0;
+			var ro = 0;
 			function cb(){
-				img.style.transform = `translate(${translate_x}px, ${translate_y}px) rotate(${rotate}deg) scale(${scale})`;
+				img.style.transform = `translate(${translate_x}px, ${translate_y}px) rotate(${rotate + rotate_old - ro}deg) scale(${scale})`;
 			}
 			function start(e){
 				e.preventDefault();
@@ -56,6 +57,7 @@
 				if(touches_len>1){
 					x2 = e.targetTouches[1].clientX;
 					y2 = e.targetTouches[1].clientY;
+					ro = Math.atan((my2 - my1) / (mx2 - mx1) * 180 / Math.PI);
 				}
 			}
 			function move(e){
@@ -70,8 +72,7 @@
 					mx2 = e.targetTouches[1].clientX;
 					my2 = e.targetTouches[1].clientY;
 					scale = Math.sqrt(Math.pow(mx2 - mx1, 2) + Math.pow(my2 - my1, 2)) / Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)) * scale_old;
-					// rotate = 
-					console.log(e.targetTouches[0].e/targetTouches[1]);
+					rotate = Math.atan((my2 - my1) / (mx2 - mx1) * 180 / Math.PI);
 				}
 				cb();
 			}
@@ -80,7 +81,8 @@
 				translate_x_old = translate_x;
 				translate_y_old = translate_y;
 				scale_old = scale;
-				rotate_old = rotate;
+				rotate_old += rotate - ro;
+				ro = 0;
 				div.innerHTML = 0;
 			}
 			document.addEventListener('touchstart', start);
@@ -90,8 +92,8 @@
 	
 		gesture();
 		
-	</script> -->
-	<video src="test.mp4" style="width: 100%;" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
+	</script>
+	<!-- <video src="test.mp4" style="width: 100%;" controls="" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
 	<script>
 		document.querySelector('video').onclick = function(){
 			if(this.paused){
@@ -100,6 +102,6 @@
 				this.pause();
 			}
 		}
-	</script>
+	</script> -->
 </body>
 </html>
