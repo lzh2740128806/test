@@ -5,12 +5,18 @@
 	<title>test</title>
 	<style>
 		div{
-			position: relative;
+			position: fixed;
+			left: 9999px;
+			top: 9999px;
 			width: 300px;
 			height: 300px;
 			overflow: hidden;
 		}
-		div:after, div:before{
+		img{
+			width: 100%;
+			height: 100%;
+		}
+		/*div:after, div:before{
 			content: '';
 			display: block;
 			position: absolute;
@@ -25,14 +31,23 @@
 			top: auto;
 			right: -25%;
 			bottom: -25%;
+		}*/
+		canvas{
+			/*background: #000;*/
 		}
 	</style>
 </head>
 <body>
-	<div></div>
+	<div>
+		<img src="8.jpg" alt="">
+	</div>
+	<canvas width="300" height="300"></canvas>
 	<script src="html2canvas.min.js"></script>
 	<script>
-		alert(!!window.requestAnimationFrame);
+		var can = document.querySelector('canvas');
+		var img = document.querySelector('img');
+		var c = can.getContext('2d');
+		c.drawImage(img, 0, 0, 300, 300)
 		// function convertCanvasToImage(canvas){
 		//      var image = new Image();
 		//      image.src = canvas.toDataURL("image/png");
