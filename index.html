@@ -32,17 +32,18 @@
 	<div></div>
 	<script src="html2canvas.min.js"></script>
 	<script>
-		function convertCanvasToImage(canvas){
-		     var image = new Image();
-		     image.src = canvas.toDataURL("image/png");
-		     return image;
-		}
-		html2canvas(document.querySelector("div")).then(canvas => {
-		    document.body.appendChild(convertCanvasToImage(canvas));
-		});
+		alert(!!window.requestAnimationFrame);
+		// function convertCanvasToImage(canvas){
+		//      var image = new Image();
+		//      image.src = canvas.toDataURL("image/png");
+		//      return image;
+		// }
+		// html2canvas(document.querySelector("div")).then(canvas => {
+		//     document.body.appendChild(convertCanvasToImage(canvas));
+		// });
 
-		var can = document.createElement('canvas');
-		var c = can.getContext('2d');
+		// var can = document.createElement('canvas');
+		// var c = can.getContext('2d');
 	</script>
 </body>
 </html>
